@@ -37,7 +37,12 @@ app.use(cors({
     
     // For production, allow the frontend domain from env
     if (process.env.NODE_ENV === 'production' && process.env.FRONTEND_URL) {
-      if (origin === process.env.FRONTEND_URL) return callback(null, true);
+      if (
+        origin === process.env.FRONTEND_URL ||
+        origin === process.env.FRONTEND_URL.replace('www.', '') ||
+        origin === 'https://forevercookie.com' ||
+        origin === 'https://www.forevercookie.com'
+      ) return callback(null, true);
     }
     
     return callback(new Error('Not allowed by CORS'));
