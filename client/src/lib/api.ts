@@ -77,7 +77,7 @@ async function handleResponse<T>(response: Response): Promise<T> {
 export const api = {
   // Generate custom recipe based on preferences
   async generateRecipe(data: RecipeGenerationRequest): Promise<Recipe> {
-    const response = await fetch(`${API_BASE_URL}/generate-recipe`, {
+    const response = await fetch(`${API_BASE_URL}/api/generate-recipe`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ export const api = {
 
   // Get dessert suggestions based on mood and preferences
   async getDessertSuggestions(data: DessertSuggestionRequest): Promise<DessertSuggestion[]> {
-    const response = await fetch(`${API_BASE_URL}/suggest-dessert`, {
+    const response = await fetch(`${API_BASE_URL}/api/suggest-dessert`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ export const api = {
 
   // Find recipes based on available ingredients
   async findRecipesByIngredients(data: IngredientsToRecipeRequest): Promise<MatchedRecipe[]> {
-    const response = await fetch(`${API_BASE_URL}/recipes/search-by-ingredients`, {
+    const response = await fetch(`${API_BASE_URL}/api/recipes/search-by-ingredients`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -116,13 +116,13 @@ export const api = {
 
   // Get static recipes
   async getRecipes(): Promise<Recipe[]> {
-    const response = await fetch(`${API_BASE_URL}/recipes`);
+    const response = await fetch(`${API_BASE_URL}/api/recipes`);
     return handleResponse<Recipe[]>(response);
   },
 
   // Create order (fixed endpoint)
   async createOrder(orderData: any): Promise<any> {
-    const response = await fetch(`${API_BASE_URL}/order`, {
+    const response = await fetch(`${API_BASE_URL}/api/order`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
